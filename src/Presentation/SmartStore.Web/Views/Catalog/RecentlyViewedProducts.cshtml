@@ -1,0 +1,27 @@
+﻿@model ProductSummaryModel
+
+@{
+    Layout = "_ColumnsTwo";
+    Html.AddTitleParts(T("PageTitle.RecentlyViewedProducts").Text);
+}
+
+@using SmartStore.Web.Models.Catalog;
+
+<div class="page recently-viewed-products-page">
+    <div class="page-title">
+        <h1 class="h3">@T("Products.RecentlyViewedProducts")</h1>
+    </div>
+
+    <div class="page-body">
+        @if (Model.Items.Count > 0)
+		{
+			Html.RenderPartial("Product.List", Model);
+		}
+		else
+		{
+			<div class="alert alert-warning">
+				@T("Common.ListIsEmpty")
+			</div>
+		}
+    </div>
+</div>

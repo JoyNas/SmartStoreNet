@@ -1,0 +1,32 @@
+﻿@model ProductSummaryModel
+
+@{
+    Layout = "_ColumnsTwo";
+    Html.AddTitleParts(T("PageTitle.RecentlyAddedProducts").Text);
+}
+
+@using SmartStore.Web.Models.Catalog;
+@using SmartStore.Web.Framework.UI;
+
+<div class="page recently-added-products-page">
+    <div class="page-title">
+        <a href="@Url.RouteUrl("RecentlyAddedProductsRSS")" class="link-rss" title="@T("Products.NewProducts.RSS.Hint")">
+			<i class="fa fa-rss text-muted"></i>
+			@T("Products.NewProducts.RSS")
+		</a>
+        <h1 class="h3">@T("Products.NewProducts")</h1>
+    </div>
+
+    <div class="page-body">
+		@if (Model.Items.Count > 0)
+		{
+			Html.RenderPartial("Product.List", Model);
+		}
+		else
+		{
+			<div class="alert alert-warning">
+				@T("Common.ListIsEmpty")
+			</div>
+		}
+    </div>
+</div>

@@ -1,0 +1,8 @@
+﻿@model EditForumPostModel
+@using SmartStore.Web.Models.Boards;
+@{   
+    Layout = "_ColumnsOne";
+
+    Html.AddTitleParts(T("Forum.PageTitle.PostNew").Text);
+}
+@{ Html.RenderPartial("_CreateUpdatePost", @Model); }
